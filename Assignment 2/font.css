@@ -1,0 +1,16 @@
+
+p{
+    font-family:'Nerko One','Franklin Gothic medium','Arial Narrow','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size-adjust: 34;
+    line-height: 1.5em;
+        }
+span{
+    font-weight: bold;
+    font-style: italic;
+}
+    #firstPara{
+        color: red;
+    }
+    #div-last{
+        background-image: url(./download.jpg);
+    }
