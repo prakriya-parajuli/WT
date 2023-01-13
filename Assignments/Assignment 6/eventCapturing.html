@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Capturing</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        div {
+            width: 100%;
+            padding: 100px;
+        }
+        
+        .one {
+            background-color: rgb(86, 255, 162);
+            text-align: center;
+            font-size: xx-large;
+            font-weight: bolder;
+        }
+        
+        .two {
+            background-color: rgb(143, 102, 255);
+        }
+        
+        .three {
+            background-color:pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one"> One
+        <div class="two">Two
+            <div class="three">three
+            </div>
+        </div>
+    </div>
+    <script>
+        const divs = document.querySelectorAll('div');
+
+        function logtext(e) {
+            alert(this.classList.value);
+            //e.stopPropagation();
+
+        }
+        divs.forEach(div => div.addEventListener('click', logtext, {
+            capture: true
+        }))
+    </script>
+</body>
+</html>
