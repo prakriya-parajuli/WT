@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ok</title>
+    <style>
+        .red {
+            background-color: rgb(116, 56, 56);
+            width: 50%;
+            height: 50%;
+            position: absolute;
+        }
+        
+        .blue {
+            background-color: rgb(187, 224, 250);
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            margin: auto;
+            top: 50px;
+            left: 50px;
+        }
+        
+        .green {
+            background-color: rgb(171, 217, 176);
+            width: 50%;
+            height: 50%;
+            position: absolute;
+            margin: auto;
+            top: 100px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red" onclick="position(this)" onmouseover="stacking('red', 'blue', 'green')" onmouseleave="def(this)">
+
+    </div>
+    <div class="blue" onclick="position(this)" onmouseover="stacking('blue', 'red', 'green')" onmouseleave="def(this)">
+
+    </div>
+    <div class="green" onclick="position(this)" onmouseover="stacking('green', 'blue', 'red')" onmouseleave="def(this)">
+
+    </div>
+    <script>
+        var col;
+
+        function stacking(first, second, third) {
+            document.getElementsByClassName(first)[0].style.zIndex = "10";
+            document.getElementsByClassName(second)[0].style.zIndex = "0";
+            document.getElementsByClassName(third)[0].style.zIndex = "0";
+        }
+
+        function def(el) {
+            el.style.backgroundColor = col;
+        }
+
+        function position(el) {
+            alert(document.getElementsByClassName(el).style.position);
+
+        }
+        let element;
+        const divs = document.querySelectorAll("div");
+
+        for (el of divs) {
+            el.addEventListener("mousedown", grab, true);
+        }
+
+        function grab(event) {
+            element = event.currentTarget;
+            document.addEventListener("mousemove", mover, true);
+            document.addEventListener("mouseup", droper, true);
+        }
+
+        function mover(event) {
+            element.style.left = event.clientX + "px";
+            element.style.top = event.clientY + "px";
+        }
+
+        function droper(event) {
+            document.removeEventListener("mousemove", mover, true);
+
+            document.removeEventListener("mouseup", droper, true);
+        }
+    </script>
+</body>
+
+</html>
